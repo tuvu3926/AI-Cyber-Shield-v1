@@ -1,0 +1,6 @@
+url,predicted_result,user_feedback,actual_label,ml_label,forest_risk,bayes_risk,timestamp
+chatgpt.com,SAFE,Correct,LEGITIMATE,1,43.0,0.0,2026-05-31 22:56:58
+https://startds-live.wixstudio.com/enus,SAFE,Incorrect,PHISHING,-1,43.29,0.0,2026-05-31 23:37:26
+signin.eby.de.zukruygxctzmmqi.civpro.co.za,SAFE,Incorrect,PHISHING,-1,10.01,0.0,2026-06-01 16:07:25
+"https://www.scribd.com/document/778322161/MI3052-Bai-t%E1%BA%ADp-l%E1%BB%9Bn-IT1-K67-1#content=query:song%20song,pageNum:19,indexOnPage:0,bestMatch:false",SAFE,Correct,LEGITIMATE,1,8.22,0,2026-06-01 18:19:28
+https://gemini.com,MEDIUM RISK,Incorrect,LEGITIMATE,1,36,97.89,2026-06-02 19:51:04

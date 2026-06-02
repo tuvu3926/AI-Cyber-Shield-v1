@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# Database
+scan_history.db
+scan_history.db-shm
+scan_history.db-wal
+
+# Streamlit cache
+.streamlit/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Virtual environment
+venv/
+.env

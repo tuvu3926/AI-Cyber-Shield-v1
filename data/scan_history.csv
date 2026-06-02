@@ -1,0 +1,5 @@
+url,forest_result,forest_risk,bayes_result,bayes_risk,final_result,time
+https://gemini.com,LEGITIMATE,36.0,PHISHING,97.89,SAFE,2026-06-02 22:45:45
+https://chatgpt.com,LEGITIMATE,19.07,LEGITIMATE,50.0,SAFE,2026-06-02 22:46:34
+https://gemini.com,LEGITIMATE,36.0,PHISHING,97.89,SAFE,2026-06-02 22:46:54
+https://www.youtube.com/watch?v=qCD1nLE6oL0,LEGITIMATE,16.18,LEGITIMATE,8.25,SAFE,2026-06-02 22:47:00
