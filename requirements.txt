@@ -9,3 +9,4 @@ python-whois
 requests
 scikit-learn
 waitress
+gunicorn
