@@ -274,11 +274,38 @@ class URLFeatureExtractor:
 
 def normalize_url(value: str) -> str:
     url = str(value or "").strip()
+    
+    # Xử lý markdown link
     markdown_link = re.match(r"^\[([^\]]+)\]\(([^)]+)\)$", url)
     if markdown_link:
         url = markdown_link.group(1).strip() or markdown_link.group(2).strip()
+    
+    # Thêm scheme nếu thiếu
     if url and not re.match(r"^[a-zA-Z][a-zA-Z0-9+.-]*:", url):
         url = f"https://{url}"
+    
+    # ✅ Chuẩn hóa www và trailing slash
+    parsed = urlparse(url)
+    if parsed.hostname:
+        hostname = parsed.hostname.lower()
+        
+        # Thêm www nếu thiếu (chỉ với domain thông thường, không phải subdomain)
+        parts = hostname.split(".")
+        if len(parts) == 2:  # vd: facebook.com → www.facebook.com
+            netloc = f"www.{hostname}"
+        else:
+            netloc = hostname  # giữ nguyên nếu đã có www hoặc subdomain khác
+        
+        # Giữ lại port nếu có
+        if parsed.port:
+            netloc = f"{netloc}:{parsed.port}"
+        
+        # Bỏ trailing slash ở path
+        path = parsed.path.rstrip("/")
+        
+        # Rebuild URL chuẩn
+        url = parsed._replace(netloc=netloc, path=path).geturl()
+    
     return url
 
 
