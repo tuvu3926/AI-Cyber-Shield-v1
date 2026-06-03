@@ -31,7 +31,7 @@ class Config:
 
     PHISHING_LABEL = 0
     LEGITIMATE_LABEL = 1
-    PHISHING_THRESHOLD = float(os.getenv("PHISHING_THRESHOLD", "0.85"))
+    PHISHING_THRESHOLD = float(os.getenv("PHISHING_THRESHOLD", "0.50"))
 
     REQUEST_TIMEOUT_SECONDS = float(os.getenv("REQUEST_TIMEOUT_SECONDS", "5"))
     MAX_HTML_BYTES = int(os.getenv("MAX_HTML_BYTES", str(512 * 1024)))
