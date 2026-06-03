@@ -7,6 +7,6 @@ pandas
 pytest
 python-whois
 requests
-scikit-learn
+scikit-learn==1.8.0
 waitress
 gunicorn
