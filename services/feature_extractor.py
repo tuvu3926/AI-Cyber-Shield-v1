@@ -232,7 +232,7 @@ class URLFeatureExtractor:
             "URL_Length": length_feature(len(url)),
             "Shortining_Service": -1 if SHORTENER_PATTERN.search(url) else 1,
             "having_At_Symbol": -1 if "@" in url else 1,
-            "double_slash_redirecting": -1 if url.find("//", 8) >= 0 else 1,
+            "double_slash_redirecting": -1 if "//" in urlparse(url).path else 1,
             "Prefix_Suffix": -1 if "-" in domain.split(".")[0] else 1,
             "having_Sub_Domain": subdomain_feature(hostname),
             "SSLfinal_State": 1 if parsed_url.scheme == "https" else -1,

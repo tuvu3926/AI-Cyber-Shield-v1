@@ -144,8 +144,8 @@ class DetectionService:
 
     @staticmethod
     def _final_verdict(forest_result: str, bayes_result: str) -> str:
-        if forest_result == "PHISHING":          # RF quyết định chính
-            if bayes_result == "PHISHING":
-                return "HIGH RISK"
-            return "MEDIUM RISK"
+        if forest_result == "PHISHING" and bayes_result == "PHISHING":
+            return "HIGH RISK"
+        if forest_result == "PHISHING" or bayes_result == "PHISHING":
+            return "MEDIUM RISK"   # một trong hai nghi ngờ → cảnh báo
         return "SAFE" 
