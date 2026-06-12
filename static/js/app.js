@@ -431,7 +431,7 @@ function renderPerformanceImages(images) {
       <figure class="glass-card image-card">
         <h3>${escapeHtml(image.title)}</h3>
         <img src="${escapeHtml(image.url)}" alt="${escapeHtml(image.title)}" loading="lazy">
-        <figcaption>${escapeHtml(image.filename)}</figcaption>
+        
       </figure>
     `;
   }).join("");
