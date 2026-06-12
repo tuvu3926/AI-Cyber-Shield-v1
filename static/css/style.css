@@ -1068,3 +1068,14 @@ h3 {
     padding: 24px 16px;
   }
 }
+.chart-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .chart-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
