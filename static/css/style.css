@@ -1079,3 +1079,14 @@ h3 {
     grid-template-columns: 1fr;
   }
 }
+.feature-value {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin: 8px 0;
+  display: inline-block;
+}
+.feature-value.safe    { color: var(--success); background: rgba(0,255,127,0.1); }
+.feature-value.phishing { color: var(--danger);  background: rgba(255,75,75,0.1); }
+.feature-value.medium-risk { color: var(--warning); background: rgba(255,212,59,0.1); }

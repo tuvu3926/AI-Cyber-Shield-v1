@@ -105,6 +105,7 @@ async function handleScan(event) {
     app.latestScan = data;
     renderResult(data);
     renderFeatureCharts(data);
+    renderFeatureDocs(app.featureDocs)
     setStatus("Analysis complete.");
     showToast("Scan completed successfully.", "success");
     await loadHistory(false);
@@ -509,16 +510,29 @@ function inferFeatureCategory(name) {
 }
 
 function renderFeatureDocs(features) {
-  $("#feature-docs").innerHTML = features.map((feature) => `
-    <article class="feature-doc glass-card">
-      <h3>${escapeHtml(feature.name)}</h3>
-      <div class="feature-meta">
-        <span class="chip">${escapeHtml(feature.category)}</span>
-        <span class="chip">${escapeHtml(feature.impact)} Impact</span>
+  // Lấy feature values từ scan gần nhất nếu có
+  const scanFeatures = app.latestScan?.features || {};
+
+  $("#feature-docs").innerHTML = features.map((feature) => {
+    const hasValue = app.latestScan && feature.name in scanFeatures;
+    const value = toNumber(scanFeatures[feature.name]);
+    const valueLabel = !hasValue ? "" : `
+      <div class="feature-value ${value > 0 ? "safe" : value < 0 ? "phishing" : "medium-risk"}">
+        Value: ${value} ${value > 0 ? "✅" : value < 0 ? "🚨" : "⚠️"}
       </div>
-      <p>${escapeHtml(feature.description)}</p>
-    </article>
-  `).join("");
+    `;
+    return `
+      <article class="feature-doc glass-card">
+        <h3>${escapeHtml(feature.name)}</h3>
+        <div class="feature-meta">
+          <span class="chip">${escapeHtml(feature.category)}</span>
+          <span class="chip">${escapeHtml(feature.impact)} Impact</span>
+        </div>
+        ${valueLabel}
+        <p>${escapeHtml(feature.description)}</p>
+      </article>
+    `;
+  }).join("");
 }
 
 function handleFeatureSearch(event) {
