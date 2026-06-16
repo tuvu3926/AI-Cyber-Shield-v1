@@ -468,7 +468,11 @@ function buildFeatureDocs(featureColumns) {
 
 function tableHeaders(rows) {
   const firstRow = rows.find((row) => row && typeof row === "object");
-  return firstRow ? Object.keys(firstRow) : [];
+  if (!firstRow) return [];
+  const keys = Object.keys(firstRow);
+  const algoKey = keys.find((k) => normalizeHeader(k) === "algorithm");
+  if (!algoKey) return keys;
+  return [algoKey, ...keys.filter((k) => k !== algoKey)];
 }
 
 function findHeader(headers, candidates) {
